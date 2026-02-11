@@ -1,0 +1,14 @@
+parameters:
+    reportUnmatchedIgnoredErrors: false
+    paths:
+        - src
+    level: max
+
+    tmpDir: /tmp/phpstan
+
+    parallel:
+        maximumNumberOfProcesses: 0
+
+    ignoreErrors:
+        - identifier: trait.unused
+        - '#PHPDoc tag @var#'
