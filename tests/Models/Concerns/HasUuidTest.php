@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
+use Additions\Models\Concerns\HasUuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Schema;
-use Additions\Models\Concerns\HasUuid;
 
 // Boot Laravel + refresh database
 uses(RefreshDatabase::class);

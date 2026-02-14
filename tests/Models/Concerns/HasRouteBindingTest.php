@@ -1,10 +1,10 @@
 <?php
 
+use Additions\Models\Concerns\HasRouteBinding;
+use Additions\Models\Concerns\RouteKeyBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Additions\Models\Concerns\HasRouteBinding;
-use Additions\Models\Concerns\RouteKeyBuilder;
 
 test('HasRouteBinding is applied', function () {
     Schema::create('route_key_models', function (Blueprint $table) {

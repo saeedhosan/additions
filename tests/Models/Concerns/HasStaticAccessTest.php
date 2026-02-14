@@ -1,10 +1,10 @@
 <?php
 
+use Additions\Models\Concerns\HasStaticAccess;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Schema;
-use Additions\Models\Concerns\HasStaticAccess;
 
 uses(RefreshDatabase::class);
 

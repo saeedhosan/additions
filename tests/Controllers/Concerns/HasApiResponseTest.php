@@ -1,8 +1,8 @@
 <?php
 
+use Additions\Controllers\Concerns\HasApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
-use Additions\Controllers\Concerns\HasApiResponse;
 
 function makeController()
 {

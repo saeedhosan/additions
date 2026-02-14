@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
+use Additions\Models\Concerns\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
-use Additions\Models\Concerns\HasSlug;
 
 uses(RefreshDatabase::class);
 

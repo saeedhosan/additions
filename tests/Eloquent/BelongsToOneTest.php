@@ -1,10 +1,10 @@
 <?php
 
+use Additions\Eloquent\Concerns\HasBelongsToOne;
+use Additions\Eloquent\Relations\BelongsToOne;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Additions\Eloquent\Concerns\HasBelongsToOne;
-use Additions\Eloquent\Relations\BelongsToOne;
 
 /**
  * Assumptions: this feature is a relation/trait only (no auth/validation surfaces to test here).
