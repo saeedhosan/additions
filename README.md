@@ -1,13 +1,13 @@
 <p align="center">
-    <a href="https://github.com/saeedhosan/Additions/actions"><img alt="GitHub Workflow Status (master)" src="https://img.shields.io/github/actions/workflow/status/saeedhosan/Additions/tests.yml?branch=main&label=tests&style=round-square"></a>
-    <a href="https://packagist.org/packages/saeedhosan/Additions"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/saeedhosan/Additions?1"></a>
-    <a href="https://packagist.org/packages/saeedhosan/Additions"><img alt="Latest Version" src="https://img.shields.io/packagist/v/saeedhosan/Additions"></a>
-    <a href="https://packagist.org/packages/saeedhosan/Additions"><img alt="License" src="https://img.shields.io/github/license/saeedhosan/Additions?1"></a>
+    <a href="https://github.com/saeedhosan/additions/actions"><img alt="GitHub Workflow Status (master)" src="https://img.shields.io/github/actions/workflow/status/saeedhosan/additions/tests.yml?branch=main&label=tests&style=round-square"></a>
+    <a href="https://packagist.org/packages/saeedhosan/additions"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/saeedhosan/additions?1"></a>
+    <a href="https://packagist.org/packages/saeedhosan/additions"><img alt="Latest Version" src="https://img.shields.io/packagist/v/saeedhosan/additions"></a>
+    <a href="https://packagist.org/packages/saeedhosan/additions"><img alt="License" src="https://img.shields.io/github/license/saeedhosan/additions?1"></a>
 </p>
 
-# Laravel Additions
+# Laravel additions
 
-The Additions package provides Laravel Eloquent, supports, traits, and additional classes.
+The additions package provides Laravel Eloquent, supports, traits, and additional classes.
 
 # Table of Contents
 
