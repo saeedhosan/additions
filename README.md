@@ -22,6 +22,7 @@ The Additions package provides Laravel Eloquent, supports, traits, and additiona
     - [Traits](#support-traits)
     - [Path](#support-path)
     - [Json](#support-json)
+    - [EnvEditor](#envEditor)
 - [Eloquent Relations](#eloquent-relations)
     - [BelongsToOne](#belongsToOne)
 
@@ -576,7 +577,7 @@ Json::decode('123', $default);             // ['default' => true]
 
 ### BelongsToOne
 
-The `BelongsToOne` relation provides a one-to-one relationship through a pivot table. 
+The `BelongsToOne` relation provides a one-to-one relationship through a pivot table.
 It behaves like `belongsToMany`, but returns a single related model.
 
 **Defining the Relationship**
@@ -598,6 +599,7 @@ class Blog extends Model
     }
 }
 ```
+
 Accessing the relation returns a single model (or `null`):
 
 ```php
@@ -617,4 +619,30 @@ Eager load it like any other relation:
 
 ```php
 $blogs = Blog::query()->with('author')->get();
+```
+
+### EnvEditor
+
+The `EnvEditor` support class provides a simple way to modify laravel environment variables.
+
+It handles quoting, escaping, and ensures your environment configuration stays consistent.
+
+```php
+use Additions\Support\EnvEditor;
+
+EnvEditor::addKey('APP_NAME', 'My Application');
+// APP_NAME="My Application"
+
+EnvEditor::editKey('APP_DEBUG', 'true');
+
+EnvEditor::setKey('APP_URL', 'https://example.com');
+
+EnvEditor::keyExists('APP_DEBUG'); // bool
+```
+
+The `put()` method works like `setKey()` and before check with `keyExists`:
+
+```php
+EnvEditor::put('DB_HOST', 'localhost'); // add new
+EnvEditor::put('DB_HOST', '127.0.0.1'); // Updates existing
 ```
