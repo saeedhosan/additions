@@ -295,7 +295,6 @@ Why This Trait Exists?
 
 This trait offers a clean, explicit way to do that while staying aligned with Laravel’s conventions.
 
-
 Attach the trait to any Eloquent model:
 
 ```php
@@ -316,19 +315,16 @@ User::fields();          // Returns fillable attributes
 User::findByKey($key);   // Find model by route key
 User::findByRouteKey($key); // Alias of findByKey
 ```
+
 - Static access without instantiate.
 - Improved readability – Clear intent in routing, and helpers.
 - Zero side effects – Uses fresh model instances internally.
 
 ## Support
 
-### Support Traits
+### CreateInstance Trait
 
-#### CreateInstance Trait
-
-The `CreateInstance` trait provides convenient, expressive ways to create class instances using either the Laravel service container or a lightweight static cache.
-
-It is designed for **service-style classes** where controlled instantiation improves clarity and reuse.
+The `CreateInstance` trait provides convenient, expressive ways to create class instances using static cache.
 
 Attach the trait to any class:
 
@@ -347,7 +343,7 @@ class ReportGenerator
 }
 ```
 
-**Creating Instances via the Container**
+Creating Instances via the Container
 
 Use `make()` to resolve the class through Laravel’s service container.
 
@@ -355,28 +351,9 @@ Use `make()` to resolve the class through Laravel’s service container.
 $report = ReportGenerator::make('Laravel is')->getName(); // Laravel is
 ```
 
-**Creating Cached Static Instances**
-
-Use `init()` to create and reuse instances based on constructor arguments.
-
-```php
-$first  = ReportGenerator::init('PHP is');
-$first->getName(); // PHP is
-
-$second = ReportGenerator::init('PHP is');
-
-$first === $second; // true
-```
-
-- Instances are cached per argument signature
-- Subsequent calls with the same arguments return the same instance
-- Ideal for stateless, reusable objects
-
-#### PreventInstance Trait
+### PreventInstance Trait
 
 The `PreventInstance` trait ensures a class cannot be instantiated.
-
-It is intended for static-only utility classes where object creation would be a design error.
 
 Apply the trait to a class meant for static usage only:
 
@@ -401,15 +378,10 @@ new StringHelpers();
 // LogicException: StringHelpers cannot be instantiated.
 ```
 
-The error message clearly communicates the intended usage.
-
 ### Support Path
 
 The `Path` class provides simple, cross-platform utilities for working with file system paths.
-
 It focuses on **normalization**, **joining**, and **safe path inspection**, without side effects.
-
-#### Joining Paths
 
 Join multiple path segments into a clean, normalized path:
 
@@ -422,7 +394,7 @@ Path::join('storage', 'app', 'files');
 
 Handles duplicate slashes and mixed separators automatically.
 
-#### Normalizing Paths
+---
 
 Normalize a path by: Converting `\` to `/` Removing `./` and removing duplicate slashes
 
@@ -431,7 +403,7 @@ Path::normalize('storage\\app//./files');
 // storage/app/files
 ```
 
-#### Current File Directory
+---
 
 Get the directory of the file where Path::current() is called:
 
@@ -442,9 +414,9 @@ Path::current('config', 'files');
 
 Useful for resolving paths relative to the calling file.
 
-#### Resolving Real Paths
+---
 
-Resolve a path to its absolute form (if it exists):
+Resolving Real Paths - Resolve a path to its absolute form (if it exists):
 
 ```php
 Path::real('./storage/app');
@@ -453,9 +425,9 @@ Path::real('./storage/app');
 
 Returns null if the path does not exist.
 
-#### Replacing Path Segments
+---
 
-Replace the first occurrence:
+Replacing Path Segments - Replace the first occurrence:
 
 ```php
 Path::replaceFirst('storage', 'public', 'storage/app/file.txt');
@@ -469,9 +441,9 @@ Path::replace('/', '-', 'storage/app/file.txt');
 // storage-app-file.txt
 ```
 
-#### Path Information
+---
 
-Get common path parts:
+Path Information - Get common path parts:
 
 ```php
 Path::dirname('/var/www/index.php');
@@ -487,9 +459,9 @@ Path::extension('/var/www/index.php');
 // php
 ```
 
-### Absolute Path Detection
+---
 
-Check if a path is absolute (Linux or Windows):
+Absolute Path Detection - Check if a path is absolute (Linux or Windows):
 
 ```php
 Path::isAbsolute('/var/www');     // true
@@ -522,6 +494,8 @@ Json::is(null);               // false
 ```
 
 Only valid JSON strings return true.
+
+---
 
 **Decoding JSON Safely**
 
@@ -560,9 +534,8 @@ Json::decode('123', $default);             // ['default' => true]
 ### BelongsToOne
 
 The `BelongsToOne` relation provides a one-to-one relationship through a pivot table.
-It behaves like `belongsToMany`, but returns a single related model.
+It behaves like `belongsToMany`, but returns a single related model insted of first.
 
-**Defining the Relationship**
 
 Use the `HasBelongsToOne` trait and define the relation with the pivot table and keys:
 
@@ -581,7 +554,6 @@ class Blog extends Model
     }
 }
 ```
-
 Accessing the relation returns a single model (or `null`):
 
 ```php
