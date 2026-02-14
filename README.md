@@ -46,13 +46,11 @@ composer require saeedhosan/Additions
 
 ## Model Concerns
 
-### HasSlug Trait
+### HasSlug Concern
 
 The `HasSlug` trait adds automatic, unique slug generation to Eloquent models.
 
-It generates slugs from a source attribute, ensures uniqueness at the database level, and keeps slugs in sync when the source value changes.
-
-#### Usage the HasSlug trait
+It generates slug from the getSlugSource, it ensures uniqueness at the database level, and keeps slug in sync when the source value changes.
 
 Apply the trait to any Eloquent model:
 
@@ -67,9 +65,7 @@ class Post extends Model
 
 > **Note** By default, the slug will be generated from the name attribute and stored in the slug column.
 
-When a model is created, a slug is automatically generated from the name attribute and stored in the slug column.
-
-**Slug Generation & Uniqueness**
+Slug Generation & Uniqueness
 
 ```php
 Post::create(['name' => 'Fake Name'])->slug;     // fake-name
@@ -77,7 +73,7 @@ Post::create(['name' => 'Fake Name'])->slug;     // fake-name-1
 Post::create(['name' => 'Fake Name'])->slug;     // fake-name-2
 ```
 
-#### Customizable Slug keys and methods
+Customizable Slug keys and methods
 
 ```php
 class Post extends Model
@@ -118,7 +114,7 @@ class Post extends Model
 }
 ```
 
-#### Finding a Model by Slug
+Finding a Model by Slug
 
 ```php
 $post = Post::findBySlug('fake-name');
@@ -126,10 +122,8 @@ $post = Post::findBySlug('fake-name');
 
 Returns the first matching model or null if no record exists.
 
-#### Automatic Model Events
+---
 
-The trait hooks into Eloquent lifecycle events.
-**On Create**
 A slug is generated if the slug column is empty.
 
 ```php
@@ -141,7 +135,8 @@ Post::create(['name' => 'My Test Name']);
 // slug: my-test-name-1
 ```
 
-**On Update**
+---
+
 The slug is regenerated when the source attribute changes.
 
 ```php
@@ -151,13 +146,11 @@ $post->update(['name' => 'Updated Name']);
 // slug: updated-name
 ```
 
-### HasUuid Trait
+### HasUuid Concern
 
 The `HasUuid` trait adds automatic UUID generation and lookup capabilities to Eloquent models.
 
-It ensures every model receives a unique UUID on creation while allowing full control over column naming and behavior.
-
-### Usage the HasUuid trait
+It ensures every model receives a unique UUID on creation while allowing control over column naming and behavior.
 
 Apply the trait to any Eloquent model:
 
@@ -174,7 +167,7 @@ class Post extends Model
 
 When a model is created, a UUID is automatically generated and stored in the uuid column.
 
-#### Finding a Model by UUID
+Find Model by UUID
 
 ```php
 $post = Post::findByUuid($uuid);
@@ -182,7 +175,9 @@ $post = Post::findByUuid($uuid);
 
 Returns the matching model instance or null if no record is found.
 
-#### Automatic UUID Generation
+---
+
+Automatic UUID Generation
 
 UUIDs are generated during the creating model event.
 
@@ -195,7 +190,9 @@ $post->uuid; // string (26 characters) by default
 - UUIDs are unique per record
 - Existing UUID values are never overridden
 
-#### Accessing the UUID Value
+---
+
+Accessing the UUID Value
 
 ```php
 $post->getUuidKey();
@@ -203,7 +200,7 @@ $post->getUuidKey();
 
 Returns the UUID value for the model, or null if it has not been generated yet.
 
-#### Customizing the UUID Column
+---
 
 You may override the UUID column name by redefining getUuidKeyName():
 
@@ -219,9 +216,7 @@ class Post extends Model
 }
 ```
 
-This allows you to store UUIDs in a custom column while keeping all behavior intact.
-
-#### Manual UUID Assignment
+---
 
 If a UUID is manually provided, the trait will respect it:
 
@@ -232,9 +227,7 @@ Post::create([
 ]);
 ```
 
-The `HasUuid` trait will not overwrite the existing values.
-
-#### Database Considerations
+Database Considerations
 
 For best results add a unique index on the UUID column
 
@@ -244,7 +237,7 @@ $table->uuid('uuid')->unique();
 
 ### HasRouteBinding
 
-This feature makes Eloquent’s `find()` method resolve models using the **route key** instead of the primary key.
+This feature makes Eloquent’s `find()` method resolve using the **getRouteKeyName** instead of primary key.
 
 It is useful when your models are identified by a slug, UUID, or any custom route key.
 
@@ -278,14 +271,7 @@ Post::where('slug', 'my-post-slug')->first();
 
 Instead of querying by the primary key.
 
-**How It Works**
-
-- The model swaps Laravel’s default Eloquent builder
-- A custom builder (RouteKeyBuilder) overrides find()
-- find() now queries using getRouteKeyName()
-- No other query behavior is affected.
-
-**Example with UUIDs**
+Example with UUIDs
 
 ```php
 class Order extends Model
@@ -305,11 +291,10 @@ Order::find('01HFYQ3P2YF4K8J9Q6Z8M2X7A1');
 
 The `HasStaticAccess` trait provides a small set of static helpers for Eloquent models, allowing you to access common model metadata and queries without manually instantiating the model.
 
-#### Why This Trait Exists
+Why This Trait Exists?
 
 This trait offers a clean, explicit way to do that while staying aligned with Laravel’s conventions.
 
-#### Usage the HasStaticAccess trait class
 
 Attach the trait to any Eloquent model:
 
@@ -322,7 +307,7 @@ class User extends Model
 }
 ```
 
-#### Available Static Access
+Available Static Access
 
 ```php
 User::tableName();       // Returns the table name
@@ -331,9 +316,6 @@ User::fields();          // Returns fillable attributes
 User::findByKey($key);   // Find model by route key
 User::findByRouteKey($key); // Alias of findByKey
 ```
-
-#### Benefits
-
 - Static access without instantiate.
 - Improved readability – Clear intent in routing, and helpers.
 - Zero side effects – Uses fresh model instances internally.
