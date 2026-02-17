@@ -1,7 +1,6 @@
 {
     "name": "saeedhosan/additions",
-    "version": "dev-main",
-    "description": "The package provide classes for laravel Elequent, Supports",
+    "description": "The package provides classes for Laravel Eloquent, supports",
     "type": "library",
     "license": "MIT",
     "autoload": {
