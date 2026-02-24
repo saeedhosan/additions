@@ -1,8 +1,8 @@
 <p align="center">
     <a href="https://github.com/saeedhosan/additions/actions"><img alt="GitHub Workflow Status (master)" src="https://img.shields.io/github/actions/workflow/status/saeedhosan/additions/tests.yml?branch=main&label=tests&style=round-square"></a>
-    <a href="https://packagist.org/packages/saeedhosan/additions"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/saeedhosan/additions?1"></a>
+    <a href="https://packagist.org/packages/saeedhosan/additions"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/saeedhosan/additions"></a>
     <a href="https://packagist.org/packages/saeedhosan/additions"><img alt="Latest Version" src="https://img.shields.io/packagist/v/saeedhosan/additions"></a>
-    <a href="https://packagist.org/packages/saeedhosan/additions"><img alt="License" src="https://img.shields.io/github/license/saeedhosan/additions?1"></a>
+    <a href="https://packagist.org/packages/saeedhosan/additions"><img alt="License" src="https://img.shields.io/github/license/saeedhosan/additions"></a>
 </p>
 
 # Laravel additions
@@ -32,7 +32,7 @@ The additions package provides Laravel Eloquent, supports, traits, and additiona
 
 This package provide collection of reusable php classes to improve everyday Laravel development.
 
-It provides **Eloquent model concerns**, **support utilities**, and **lightweight traits** that solve common problems—cleanly, safely, and in a Laravel-native way.
+It provides **Eloquent model traits**, **support utilities**, and **lightweight traits** that solve common problems - cleanly, safely, and in a Laravel-native way.
 
 Each snippet is intentionally minimal, well-tested, and easy to drop into real-world projects.
 
@@ -41,7 +41,7 @@ Each snippet is intentionally minimal, well-tested, and easy to drop into real-w
 You can install the package via composer:
 
 ```bash
-composer require saeedhosan/Additions
+composer require saeedhosan/additions
 ```
 
 ## Model Concerns
